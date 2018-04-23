@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tl="clr-namespace:SmartHotel.Views.Templates"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="SmartHotel.Views.MenuView"
+             xmlns:behavior="clr-namespace:SmartHotel.Behaviors">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <ff:CachedImage Aspect="AspectFill"
+                            LoadingPlaceholder="loading.png">
+                <ff:CachedImage.Transformations>
+                    <transformations:CircleTransformation/>
+                </ff:CachedImage.Transformations>
+            </ff:CachedImage>
+
+            <BoxView Grid.Row="0"
+                     BackgroundColor="Black"
+                     Opacity="0.6" />
+
+            <Label Grid.Row="0"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   FontSize="Large"
+                   Margin="0,20"
+                   Text="Hello, John Doe" />
+
+            <ListView x:Name="MyListView"
+                      Grid.Row="1"
+                      RowHeight="60"
+                behavior:ItemTappedCommandListView.ItemTappedCommand="{Binding MenuComand}"
+                      ItemsSource="{Binding Menu}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <tl:MenuItemTemplate />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<ScrollView Grid.Row="1">
+                <StackLayout  Padding="10"
+                              Spacing="10">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBookingMenuTapped" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="ic_bed" />
+                        <Label Text="Book a room"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="ic_key" />
+                        <Label Text="My room"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="ic_beach" />
+                        <Label Text="Suggestions"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="ic_bot" />
+                        <Label Text="Concierge"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+
+
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="ic_logout" />
+                        <Label Text="Logout"
+                               FontSize="18"
+                               VerticalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
